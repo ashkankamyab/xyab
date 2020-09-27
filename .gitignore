@@ -1,0 +1,7 @@
+*.pyc
+.env
+.venv/
+.vscode/
+test
+html/
+cred.json
