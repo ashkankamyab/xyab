@@ -1,11 +1,11 @@
 FROM ubuntu
 LABEL maintener="ashkankamyab@gmail.com" \
-        repository="https://bitbucket.org/ashkankamyab/marash/src/master/"\
+        repository="https://github.com/ashkankamyab/xyab.git"\
         last_update="Sa 12. Sep 2020"
 
 
 RUN apt-get update -qqq && apt-get update -qqqy
-RUN apt-get install -qqy \
+RUN apt-get install -qqgity \
         locales \
         build-essential \
         libssl-dev \
@@ -28,6 +28,7 @@ ENV LC_ALL en_US.UTF-8
 
 WORKDIR /usr/src/app
 COPY main.py ./
+COPY arzyab.py ./
 COPY cred.json ./
 COPY requirements.txt ./
 RUN pip3 install -r requirements.txt
