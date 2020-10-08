@@ -29,7 +29,7 @@ ENV LC_ALL en_US.UTF-8
 WORKDIR /usr/src/app
 COPY main.py ./
 COPY arzyab.py ./
-COPY cred.json.sample ./
+COPY cred.json ./
 COPY requirements.txt ./
 RUN pip3 install -r requirements.txt
 CMD ["python3", "main.py"]
