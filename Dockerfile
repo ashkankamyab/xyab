@@ -5,7 +5,7 @@ LABEL maintener="ashkankamyab@gmail.com" \
 
 
 RUN apt-get update -qqq && apt-get update -qqqy
-RUN apt-get install -qqgity \
+RUN apt-get install -qqy \
         locales \
         build-essential \
         libssl-dev \
