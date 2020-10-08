@@ -5,7 +5,7 @@ LABEL maintener="ashkankamyab@gmail.com" \
 
 
 RUN apt-get update -qqq && apt-get update -qqqy
-RUN apt-get install -qqgity \
+RUN apt-get install -qqy \
         locales \
         build-essential \
         libssl-dev \
@@ -29,7 +29,7 @@ ENV LC_ALL en_US.UTF-8
 WORKDIR /usr/src/app
 COPY main.py ./
 COPY arzyab.py ./
-COPY cred.json ./
+COPY cred.json.sample ./
 COPY requirements.txt ./
 RUN pip3 install -r requirements.txt
 CMD ["python3", "main.py"]
