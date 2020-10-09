@@ -11,7 +11,6 @@ def getPrice(URL):
 
     URL = URL.replace("?", "/")
     ProductID = URL.split("/product/", 1)[1].split("/")[0]
-    print(ProductID)
 
     headers = {
         'authority': 'www.camelcamelcamel.com',
