@@ -1,10 +1,20 @@
 import requests
 import bs4
 
-def getPrice(ProductID):
+def getPrice(URL):
+
+    country_prefix = ""
+
+    if "amazon.de" in URL:
+        country_prefix = "de."
+        URL = URL.replace("/dp/", "/product/")
+
+    URL = URL.replace("?", "/")
+    ProductID = URL.split("/product/", 1)[1].split("/")[0]
+    print(ProductID)
 
     headers = {
-        'authority': 'www.amazon.com',
+        'authority': 'www.camelcamelcamel.com',
         'pragma': 'no-cache',
         'cache-control': 'no-cache',
         'dnt': '1',
@@ -17,6 +27,9 @@ def getPrice(ProductID):
         'accept-language': 'en-GB,en-US;q=0.9,en;q=0.8',
     }
 
-    htmldata = requests.get("https://camelcamelcamel.com/product/" + ProductID, headers=headers)
+    htmldata = requests.get("https://" + country_prefix + "camelcamelcamel.com/product/" + ProductID, headers=headers)
     soup = bs4.BeautifulSoup(htmldata.text, 'html.parser')
-    return soup.find("span", {'class': 'green'}).text
+    try:
+        return soup.find("span", {'class': 'green'}).text
+    except:
+        return False
