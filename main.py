@@ -5,6 +5,7 @@ import sys
 import json
 import logging
 import arzyab
+import cryptoyab
 
 
 #TODO: Tokenizer 
@@ -28,6 +29,10 @@ def usd(update, context):
     context.bot.send_message(chat_id=update.effective_chat.id, text=arzyab.rate_graber("sana_buy_usd"))
 def gbp(update, context):
     context.bot.send_message(chat_id=update.effective_chat.id, text=arzyab.rate_graber("sana_buy_gbp"))
+def bitcoin_eur(update, context):
+    context.bot.send_message(chat_id=update.effective_chat.id, text=cryptoyab.get_crypto_price('bitcoin', 'eur'))
+def ethereum_eur(update, context):
+    context.bot.send_message(chat_id=update.effective_chat.id, text=cryptoyab.get_crypto_price('ethereum', 'eur'))
 
 start_handler = CommandHandler('start', start)
 dispatcher.add_handler(start_handler)
@@ -37,6 +42,10 @@ start_usd = CommandHandler('usd', usd)
 dispatcher.add_handler(start_usd)
 start_gbp = CommandHandler('gbp', gbp)
 dispatcher.add_handler(start_gbp)
+start_bitcoin_eur = CommandHandler('bitcoin_eur', bitcoin_eur)
+dispatcher.add_handler(ethereum_eur)
+start_ethereum_eur = CommandHandler('ethereum_eur', ethereum_eur)
+dispatcher.add_handler(ethereum_eur)
 
 def caps(update, context):
     text_caps = ' '.join(context.args).upper()
