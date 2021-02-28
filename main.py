@@ -30,9 +30,15 @@ def usd(update, context):
 def gbp(update, context):
     context.bot.send_message(chat_id=update.effective_chat.id, text=arzyab.rate_graber("sana_buy_gbp"))
 def bitcoin_eur(update, context):
-    context.bot.send_message(chat_id=update.effective_chat.id, text=cryptoyab.get_crypto_price('bitcoin', 'eur'))
+    context.bot.send_message(chat_id=update.effective_chat.id, text=cryptoyab.euro_based_price('bitcoin', 'eur'))
 def ethereum_eur(update, context):
-    context.bot.send_message(chat_id=update.effective_chat.id, text=cryptoyab.get_crypto_price('ethereum', 'eur'))
+    context.bot.send_message(chat_id=update.effective_chat.id, text=cryptoyab.euro_based_price('ethereum', 'eur'))
+def dogecoin_eur(update, context):
+    context.bot.send_message(chat_id=update.effective_chat.id, text=cryptoyab.euro_based_price('dogecoin', 'eur'))
+def cardano_eur(update, context):
+    context.bot.send_message(chat_id=update.effective_chat.id, text=cryptoyab.euro_based_price('cardano', 'eur'))
+def iota_eur(update, context):
+    context.bot.send_message(chat_id=update.effective_chat.id, text=cryptoyab.euro_based_price('iota', 'eur'))
 
 start_handler = CommandHandler('start', start)
 dispatcher.add_handler(start_handler)
@@ -43,9 +49,15 @@ dispatcher.add_handler(start_usd)
 start_gbp = CommandHandler('gbp', gbp)
 dispatcher.add_handler(start_gbp)
 start_bitcoin_eur = CommandHandler('bitcoin_eur', bitcoin_eur)
-dispatcher.add_handler(ethereum_eur)
+dispatcher.add_handler(start_bitcoin_eur)
 start_ethereum_eur = CommandHandler('ethereum_eur', ethereum_eur)
-dispatcher.add_handler(ethereum_eur)
+dispatcher.add_handler(start_ethereum_eur)
+start_dogecoin_eur = CommandHandler('dogecoin_eur', dogecoin_eur)
+dispatcher.add_handler(start_dogecoin_eur)
+start_cardano_eur = CommandHandler('cardano_eur', cardano_eur)
+dispatcher.add_handler(start_cardano_eur)
+start_iota_eur = CommandHandler('iota_eur', iota_eur)
+dispatcher.add_handler(start_iota_eur)
 
 def caps(update, context):
     text_caps = ' '.join(context.args).upper()
